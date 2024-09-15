@@ -26,6 +26,8 @@ public class CoinScript : MonoBehaviour
         } else{
             Debug.LogError("Game Manager not found");
         }
+
+        ScoreBar.maxTokens++;
     }
 
     void OnTriggerEnter2D(Collider2D other){

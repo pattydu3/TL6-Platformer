@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class ScoreBar : MonoBehaviour
 {
     public Image scoreBarFill;
-    public int maxTokens = 1;
+    public static int maxTokens;
 
     public void UpdateScoreBar(int currentTokens){
         float fillAmount = (float)currentTokens / maxTokens;

@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 
     private int numCoinsCollected = 0;
 
-    public int numCoinsInLevel = 1;
 
     public ScoreBar scorebar;
 
@@ -42,13 +41,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void CheckEndGame() {
-        if(numCoinsCollected == numCoinsInLevel){
+        if(numCoinsCollected == ScoreBar.maxTokens){
             EndGame();
         }
     }
 
     public void EndGame(){
-        if(numCoinsCollected == numCoinsInLevel){
+        if(numCoinsCollected == ScoreBar.maxTokens){
             winMessage.SetText("You Won");
         }else{
             winMessage.SetText("You Lose");

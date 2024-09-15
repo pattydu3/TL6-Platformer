@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip jump;
     public AudioClip coinGet;
     public AudioClip scheming;
+    public AudioClip hit;
 
 
     void Start(){

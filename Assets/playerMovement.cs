@@ -27,6 +27,12 @@ public class playerMovement : MonoBehaviour
     private bool isAlive = true;
 
     public AudioManager audioManager;
+
+    float currentHealth = 3;
+    float maxHealth = 3;
+    [SerializeField] HealthBar healthBar;
+
+    float knockBackPower = 5;
     
     private void Awake(){
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -75,8 +81,17 @@ public class playerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.CompareTag("Enemy")){
-            isAlive = false;
-            gameManager.EndGame();
+            audioManager.PlaySFX(audioManager.hit);
+
+            float direction = Mathf.Sign(collision.transform.position.x - transform.position.x);
+            rb.velocity = (Vector3.right * direction * knockBackPower + Vector3.up * knockBackPower);
+
+            currentHealth -= 1;
+            healthBar.updateHealth(currentHealth,maxHealth);
+            if(currentHealth == 0){
+                isAlive = false;
+                gameManager.EndGame();
+            }
         }
     }
 
