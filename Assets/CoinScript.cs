@@ -11,15 +11,12 @@ public class CoinScript : MonoBehaviour
     private int coinValue = 1;
 
     public AudioManager audioManager;
-    
-    private void Awake(){
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManagerObject = GameObject.FindWithTag("GameController");
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        if(gameManagerObject == null) gameManagerObject = GameObject.FindWithTag("GameController");
 
         if(gameManagerObject != null){
             gameManager = gameManagerObject.GetComponent<GameManager>();
